@@ -66,9 +66,9 @@ if ($one ==1 && $two ==1 && $three ==1 && $four ==1  ){
    VALUES (NULL,:name,:email ,:password)";
    $statement =  $con->prepare($sql);
  //binding : bind Varible with query   اربط المتغير مع القيمة
-   $statement->bindValue('name' ,$Name);
-   $statement->bindValue('email' , $Email);
-   $statement->bindValue('password' ,$Password);
+   $statement->bindValue('name' ,$name);
+   $statement->bindValue('email' , $email);
+   $statement->bindValue('password' ,$password);
   
    
 
@@ -104,44 +104,41 @@ if ($one ==1 && $two ==1 && $three ==1 && $four ==1  ){
     </div>
     <form action="" method="POST">
 <div class="form_lebal">
-    <label  class="form-label ">Name</label>
-    <input type="text" class="form-control" name="name" >
+    <input type="text" class="form-control" name="name" placeholder="Your Name" >
     <?php if(!empty ($errorName)){
-       echo " <p id='ahmad'>$$errorName</p>" ;
+      //  echo " <p id='ahmad'>$$errorName</p>" ;
     }
+   
     ?>
   </div>
   <div class="form_lebal">
-    <label  class="form-label">Email</label>
-    <input type="email" class="form-control" name="email" >
+    <input type="email" class="form-control" name="email" placeholder="Your Email" >
     <?php if(!empty ($errorEmail)){
-       echo "<p id='ahmad'>$$errorEmail</p>"; 
+      //  echo "<p id='ahmad'>$errorEmail</p>"; 
     }
     ?>
   </div>
   
 
   <div class="form_lebal">
-    <label class="form-label">Password</label>
-    <input type="password" class="form-control" name="password">
+    <input type="password" class="form-control" name="password" placeholder="Enter Password">
     <?php if(!empty ($errorPassword)){
-       echo " <p id='ahmad'>$errorPassword</p>" ;
+      //  echo " <p id='ahmad'>$errorPassword</p>" ;
     }
     ?>
   </div>
   <div class="form_lebal">
-    <label  class="form-label">Confirm Password</label>
-    <input type="password" class="form-control" name="Cpassword">
+    <input type="password" class="form-control" name="Cpassword" placeholder="Comfirm Password">
     <?php if(!empty ($errorCPassword)){
-       echo " <p id='ahmad'>$errorCPassword</p>" ;
+      //  echo " <p id='ahmad'>$errorCPassword</p>" ;
     }
     ?>
     <br>
   </div>
 
-  <input class="btn btn-danger col-3 mx-auto icon"  type="Submit" name="Submit" value="SignUp" ><br>
+  <input class="btn  col-3 mx-auto icon"  type="Submit" name="Submit" value="SignUp" ><br>
   <!-- <button type="button" class="btn btn-danger col-3 mx-auto icon" >Sign Up</button><br> -->
-  <p class="wel">Already have an account? <a href="login.php">log in</a></p>
+  <p class="wel" id="link" >Already have an account? <a href="login.php">log in</a></p>
 </form>
 </body>
 </html>

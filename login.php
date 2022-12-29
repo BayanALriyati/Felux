@@ -20,20 +20,13 @@ if(isset($_POST['Submit'])){
   if(!empty($_POST['email']) && !empty($_POST['password']) && ($_SERVER['REQUEST_METHOD'] === 'POST')){
     
         if($S){
-        $_SESSION['id']=$S["ID"];
-        $_SESSION['username']=$S["FirstName"];
-        $_SESSION['email']=$S["Email"];
-        $_SESSION['password']=$S["Password"];
+        $_SESSION['id']=$S["id"];
+        $_SESSION['username']=$S["name"];
+        $_SESSION['email']=$S["email"];
+        $_SESSION['password']=$S["password"];
         $_SESSION['role']=$S["Role"];
         
         $_SESSION['validate']=true;
-        // echo 'Login Successfully';
-        header('location:user.php');
-
-        //add date last log in use now() function
-        // $statement="UPDATE  users SET  last_login =now() WHERE id=". $_SESSION['ID'];
-        // $statement =  $con->prepare($sql);
-        // $statement->execute();
           }
 
         else{
@@ -60,13 +53,12 @@ if(isset($_POST['Submit'])){
 <body>
   <div class="wel">
     <h1>login</h1>
-    <p>welcome back Login with your credentials</p>
+    <p>welcome back Login </p>
 </div>
 <form action="" method="POST">
   <div class="mb-3 ">
     <label class="form-label">Email</label>
-    <input type="text" class="form-control" name="email">
-    <div>abc@gmail.com</div>
+    <input type="text"  class="form-control" name="email">
   </div>
   <div class="mb-3">
     <label  class="form-label">Password</label>
@@ -78,7 +70,6 @@ if(isset($_POST['Submit'])){
     }
     ?>
   <input class="btn btn-primary col-3 mx-auto icon"  type="Submit" name="Submit" value="Login" >
-
   <br>
   <p class="wel">Don't have an account ?<a href="SignUp.php">Sign Up</a> </p>
 </form>
