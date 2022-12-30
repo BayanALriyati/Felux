@@ -1,11 +1,11 @@
 <?php
 require('config.php');
  
-  if (isset($_POST['Submit'])) {
-    $Email=$_POST['email'];
-    $Name=$_POST['name'];
-    $Password=$_POST['password'];
-    $Confirm=$_POST['Cpassword'];
+  if (isset($_POST['Submit']) ) {
+    $user_email=$_POST['email'];
+    $user_name=$_POST['name'];
+    $user_password=$_POST['password'];
+    $confirm=$_POST['confirm'];
 
 
 // to join all if conditions togather  "flags"
@@ -22,7 +22,7 @@ require('config.php');
 
 //Email 
 if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && !empty ($_POST['email'])) {
-  $Email=$_POST['email'];
+  $user_email=$_POST['email'];
   $one = 1;
  }
 
@@ -32,7 +32,7 @@ else {
 
 //Name
  if(preg_match("/^[A-Z a-z]+$/" ,$_POST['name']) && !empty($_POST['name'])) {
-  $Name=$_POST['name'];
+  $user_name=$_POST['name'];
   $two = 1;
  }
 else {
@@ -43,7 +43,7 @@ else {
 
 // password
 //Minimum eight characters, at least one letter, one number and one special character:
-if(preg_match("/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/" ,$_POST['password']) && !empty($_POST['password'])) {
+if(preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/" ,$_POST['password']) && !empty($_POST['password'])) {
   $three =1;
  }
 else {
@@ -52,7 +52,7 @@ else {
 
 
 // Comfirm password
-if( $_POST['password'] == $_POST['Cpassword']) {
+if( $_POST['password'] == $_POST['confirm']) {
   $four = 1;
  }
 else {
@@ -61,18 +61,16 @@ else {
 
 
 // send data after submit
-if ($one ==1 && $two ==1 && $three ==1 && $four ==1  ){
-   $sql="INSERT INTO register (id,name,,email,Password) 
-   VALUES (NULL,:name,:email ,:password)";
+if ($one ==1 && $two ==1 && $three ==1 && $four ==1 ){
+   $sql=" INSERT INTO users (user_id,user_name,user_email,user_password) 
+   VALUES (NULL,:name,:email,:password)";
    $statement =  $con->prepare($sql);
  //binding : bind Varible with query   اربط المتغير مع القيمة
-   $statement->bindValue('name' ,$name);
-   $statement->bindValue('email' , $email);
-   $statement->bindValue('password' ,$password);
+   $statement->bindValue(':name' ,$user_name);
+   $statement->bindValue(':email' , $user_email);
+   $statement->bindValue(':password' ,$user_password);
   
-   
-
-   $statement-> execute();     //نفذ
+   $statement-> execute();    
    header("location:login.php");
    exit;
    echo "success";
@@ -82,7 +80,7 @@ if ($one ==1 && $two ==1 && $three ==1 && $four ==1  ){
 }
 
 
-};
+}
 
 ?>
 <!DOCTYPE html>
@@ -104,33 +102,33 @@ if ($one ==1 && $two ==1 && $three ==1 && $four ==1  ){
     </div>
     <form action="" method="POST">
 <div class="form_lebal">
-    <input type="text" class="form-control" name="name" placeholder="Your Name" >
+    <input type="text" class="form-control" name="name" placeholder="Your Name" ><br>
     <?php if(!empty ($errorName)){
-      //  echo " <p id='ahmad'>$$errorName</p>" ;
+       echo " <p id='ahmad'>$errorName</p>" ;
     }
    
     ?>
   </div>
   <div class="form_lebal">
-    <input type="email" class="form-control" name="email" placeholder="Your Email" >
+    <input type="email" class="form-control" name="email" placeholder="Your Email" ><br>
     <?php if(!empty ($errorEmail)){
-      //  echo "<p id='ahmad'>$errorEmail</p>"; 
+       echo "<p id='ahmad'>$errorEmail</p>"; 
     }
     ?>
   </div>
   
 
   <div class="form_lebal">
-    <input type="password" class="form-control" name="password" placeholder="Enter Password">
+    <input type="password" class="form-control" name="password" placeholder="Enter Password"><br>
     <?php if(!empty ($errorPassword)){
-      //  echo " <p id='ahmad'>$errorPassword</p>" ;
+       echo " <p id='ahmad'>$errorPassword</p>" ;
     }
     ?>
   </div>
   <div class="form_lebal">
-    <input type="password" class="form-control" name="Cpassword" placeholder="Comfirm Password">
+    <input type="password" class="form-control" name="confirm" placeholder="Confirm Password">
     <?php if(!empty ($errorCPassword)){
-      //  echo " <p id='ahmad'>$errorCPassword</p>" ;
+       echo " <p id='ahmad'>$errorCPassword</p>" ;
     }
     ?>
     <br>
