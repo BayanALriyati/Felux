@@ -12,10 +12,10 @@
                 <div class="card-body">
                     <form method="post" action="code.php" enctype='multipart/form-data'>
                         <div class="row">
-                            <div class="col-md-12 mb-4">
+                            <!-- <div class="col-md-12 mb-4">
                                 <label>Category ID </label>
                                 <input type="text" name="id" class="form-control" placeholder="Enter Category Name">
-                            </div>
+                            </div> -->
                             <div class="col-md-12 mb-4">
                                 <label>Category Name</label>
                                 <input type="text" name="name" class="form-control" placeholder="Enter Category Name">
