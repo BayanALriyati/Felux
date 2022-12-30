@@ -4,15 +4,15 @@ require('config.php');
 
 if(isset($_POST['Submit'])){
   $_SESSION['validate']=false;
-  $Email=$_POST['email'];
-  $Password=$_POST['password'];
+  $user_email=$_POST['email'];
+  $user_password=$_POST['password'];
   $error="";
-  $sql="SELECT * FROM user WHERE  Email =:email  and Password =:password ";
+  $sql="SELECT * FROM users WHERE  user_email =:email  and user_password =:password ";
 
    $statement =  $con->prepare($sql); //سرعه بالقراءه و سكيور , بدون تنفيذ
  //binding : bind Varible with query
-   $statement->bindValue(':email' , $Email);
-   $statement->bindValue(':password' ,$Password);
+   $statement->bindValue(':email' , $user_email);
+   $statement->bindValue(':password' ,$user_password);
    $statement-> execute();    //بتنفذ كود 
    
    $S =  $statement->fetch(PDO::FETCH_ASSOC);    //بجيب الداتا  // fetch as array
@@ -21,9 +21,9 @@ if(isset($_POST['Submit'])){
     
         if($S){
         $_SESSION['id']=$S["id"];
-        $_SESSION['username']=$S["name"];
-        $_SESSION['email']=$S["email"];
-        $_SESSION['password']=$S["password"];
+        $_SESSION['username']=$S["user_name"];
+        $_SESSION['email']=$S["user_email"];
+        $_SESSION['password']=$S["user_password"];
         $_SESSION['role']=$S["Role"];
         
         $_SESSION['validate']=true;
@@ -57,12 +57,12 @@ if(isset($_POST['Submit'])){
 </div>
 <form action="" method="POST">
   <div class="mb-3 ">
-    <label class="form-label">Email</label>
-    <input type="text"  class="form-control" name="email">
+
+    <input type="text"  class="form-control" name="email" placeholder="Email">
   </div>
   <div class="mb-3">
-    <label  class="form-label">Password</label>
-    <input type="password" class="form-control" name="password" >
+    
+    <input type="password" class="form-control" name="password" placeholder=" Password" >
     </div>
     <?php 
     if( !empty ($error) ){

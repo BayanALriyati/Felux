@@ -21,6 +21,12 @@ img{
     background-color: #185E5B;
     color: #fff;
 }
+.icon:hover{
+    background-color:  #fff;
+    color:#185E5B;
+    border: 1px solid #185E5B;
+}
+
 .btu{
    text-decoration: none;
 }

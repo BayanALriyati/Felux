@@ -23,5 +23,5 @@ if ($con->query($sql))
 {
     redirect("add-category,php" , "something went wrong");
 }
- 
+
 ?>
