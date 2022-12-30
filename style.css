@@ -38,7 +38,7 @@ img{
 } */
 
 
-/* ;;///////////////////////// */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap');
 
@@ -101,6 +101,7 @@ section{
    margin-bottom: 2rem;
    text-align: center;
    text-transform: uppercase;
+
 }
 
 .btn,
@@ -200,6 +201,7 @@ section{
    background-color: var(--white);
    box-shadow: var(--box-shadow);
    z-index: 1000;
+
 }
 
 .header .flex{
@@ -207,6 +209,7 @@ section{
    align-items: center;
    justify-content: space-between;
    position: relative;
+
 }
 
 .header .flex .logo{
@@ -224,10 +227,12 @@ section{
    color:var(--black);
 }
 
- .header .flex .navbar a:hover{
+
+.header .flex .navbar a:hover{
    color:var(--main-color);
    text-decoration: underline;
-} 
+}
+
 
 
 .header .flex .icons > *{
@@ -981,19 +986,16 @@ section{
    background-color: var(--white);
    /* padding-bottom: 7rem; */
 }
-
+/* testttttttttttttt */
+/* testttttttttttttt */
+/* testttttttttttttt */
 .footer .grid{
-   display: flex;
-   
-   /* grid-template-row: repeat(auto-fit, minmax(27rem, 1fr)); */
-   gap:5.5rem;
-   /* align-items : grid-start; */
-   justify-content: center;
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+   gap:1.5rem;
+   align-items: flex-start;
 }
-.quick {
-   display: flex;
-   align-items: center;
-}
+
 .footer .grid .box h3{
   
    font-size: 2rem;
@@ -1005,12 +1007,15 @@ section{
 .footer .grid .box a{
    display: block;
    margin:1.5rem 0;
+
    font-size: 1.7rem;
    color:var(--light-color);
 }
 
 .footer .grid .box a i{
-   padding-right: 1rem;
+
+   padding: 2rem;
+
    color:var(--main-color);
    transition: .2s linear;
 }
