@@ -106,7 +106,7 @@ section{
 .btn,
 .delete-btn,
 .option-btn{
-   display: block;
+   /* display: block; */
    width: 100%;
    margin-top: 1rem;
    border-radius: .5rem;
@@ -983,13 +983,19 @@ section{
 }
 
 .footer .grid{
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
-   gap:1.5rem;
-   align-items: flex-start;
+   display: flex;
+   
+   /* grid-template-row: repeat(auto-fit, minmax(27rem, 1fr)); */
+   gap:5.5rem;
+   /* align-items : grid-start; */
+   justify-content: center;
 }
-
+.quick {
+   display: flex;
+   align-items: center;
+}
 .footer .grid .box h3{
+  
    font-size: 2rem;
    color:var(--black);
    margin-bottom: 2rem;
